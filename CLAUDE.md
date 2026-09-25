@@ -90,6 +90,22 @@ Table 1 and Figure 6. Read the PDF; the datasheets are in `datasheets/`.
 
 ---
 
+## Power-symbol annotation must be project-wide
+
+`write_sheet()` takes a `pwr_counters` dict that **every sheet shares**.
+Numbering power symbols per sheet (the obvious implementation, and the
+original bug) gives six `#PWR0001`s. KiCad reports that as an annotation
+error and it breaks *Update PCB from Schematic*, which keys on the
+reference designator. `verify_project.py` check 6 guards it.
+
+Note the uniqueness rule is on the **(reference, unit) pair**, not the
+reference: `U201` legitimately appears three times, as units 1 and 3 on
+sheet 02 and unit 2 on sheet 05.
+
+Related trap: never count parens naively over a `.kicad_sch`. The MPN
+`TPHR8504PL,L1Q(M` contains an unmatched `(` inside a quoted string. Use
+`kicad_sch._sexp_end()`, which is string-aware.
+
 ## The two facts most likely to be got wrong
 
 **1. `DEAD_TIME` is a register value, not nanoseconds.** AM32 writes it
@@ -115,7 +131,8 @@ board leaves unconnected and the motor never spins. Precedent:
 - [x] DRV8323R symbol from SLVSDJ3D Table 6-4; MCU symbol from KiCad's G081CBTx
 - [x] Every part has Footprint + MPN + LCSC; 22 datasheets synced
 - [x] AM32 target + bit-banged DRV8323RS SPI init
-- [x] Analyzer: 42 findings, 0 errors, 0 warnings
+- [x] Analyzer: 38 findings, 0 errors, 0 warnings
+- [x] Annotation clean: 341 unique (ref, unit) pairs, #PWR0001-0176 + #FLG0001-0003, kicad-cli silent
 
 ### Next
 

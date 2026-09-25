@@ -584,7 +584,9 @@ def emit_label(lb: Label, seed: str) -> str:
 
 
 def emit_power(pp: PowerPort, project: str, path: str, idx: int) -> str:
-    ref = f"#PWR{idx:04d}"
+    # KiCad's own convention: PWR_FLAG annotates as #FLG, rails as #PWR.
+    prefix = "#FLG" if pp.sym == "PWR_FLAG" else "#PWR"
+    ref = f"{prefix}{idx:04d}"
     lib_id = f"power:{pp.sym}"
     return (
         "\t(symbol\n"
@@ -595,7 +597,7 @@ def emit_power(pp: PowerPort, project: str, path: str, idx: int) -> str:
         "\t\t(in_bom yes)\n"
         "\t\t(on_board yes)\n"
         "\t\t(dnp no)\n"
-        f'\t\t(uuid "{uid(f"pwr/{path}/{idx}")}")\n'
+        f'\t\t(uuid "{uid(f"pwr/{path}/{prefix}/{idx}")}")\n'
         f'\t\t(property "Reference" "{ref}"\n'
         f"\t\t\t(at {fmt(pp.x)} {fmt(pp.y)} 0)\n"
         + _effects("\t\t\t", hide=True)
@@ -639,7 +641,15 @@ def emit_title_block(title: str, rev: str, company: str,
 
 
 def write_sheet(path: Path, sheet: Sheet, cache: SymbolCache, project: str,
-                root_uuid: str, rev: str, company: str) -> None:
+                root_uuid: str, rev: str, company: str,
+                pwr_counters: dict[str, int] | None = None) -> None:
+    """``pwr_counters`` must be ONE dict shared by every sheet in the
+    project. Power-symbol references have to be unique project-wide, not
+    per sheet -- numbering each sheet from 1 gives six #PWR0001s, which
+    KiCad reports as an annotation error and which breaks "Update PCB from
+    Schematic", since that keys on the reference designator."""
+    if pwr_counters is None:
+        pwr_counters = {}
     inst_path = f"/{root_uuid}/{sheet.uuid}"
 
     lib_ids = sorted({c.lib_id for c in sheet.comps}
@@ -665,8 +675,10 @@ def write_sheet(path: Path, sheet: Sheet, cache: SymbolCache, project: str,
     for c in sheet.comps:
         out.append(emit_comp(c, project, inst_path,
                              cache.body_half_height(c.lib_id, c.unit)))
-    for i, pp in enumerate(sheet.powers):
-        out.append(emit_power(pp, project, inst_path, i + 1))
+    for pp in sheet.powers:
+        key = "#FLG" if pp.sym == "PWR_FLAG" else "#PWR"
+        pwr_counters[key] = pwr_counters.get(key, 0) + 1
+        out.append(emit_power(pp, project, inst_path, pwr_counters[key]))
     for i, w in enumerate(sheet.wires):
         out.append(emit_wire(w, f"wire/{sheet.filename}/{i}"))
     for i, j in enumerate(sheet.junctions):

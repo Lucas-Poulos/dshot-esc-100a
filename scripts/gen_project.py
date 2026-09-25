@@ -508,9 +508,12 @@ def generate(verify_only: bool = False) -> int:
          "STM32G071CBT6 + DRV8323R | 12x TPHR8504PL | DShot via AM32"],
         ROOT_NOTES,
     )
+    # One shared counter dict: power-symbol refs must be unique across the
+    # whole project, not per sheet.
+    pwr_counters: dict[str, int] = {}
     for s in sheets:
         write_sheet(DESIGN / s.filename, s, cache, PROJECT, ROOT_UUID,
-                    REV, COMPANY)
+                    REV, COMPANY, pwr_counters)
     write_project(DESIGN / f"{PROJECT}.kicad_pro", PROJECT, sheets, ROOT_UUID)
     write_lib_tables(
         DESIGN,

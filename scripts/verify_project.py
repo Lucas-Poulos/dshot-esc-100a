@@ -28,6 +28,9 @@ import xml.etree.ElementTree as ET
 from collections import Counter
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from kicad_sch import _sexp_end   # string-aware paren matcher
+
 ROOT = Path(__file__).resolve().parent.parent
 DESIGN = ROOT / "design"
 SCH = DESIGN / "dshot-esc-100a.kicad_sch"
@@ -48,6 +51,13 @@ EXPECT_PADS = {"U201": 49, "U401": 48, **{f"Q{n}": 5 for n in range(301, 313)}}
 ERC_ALLOWED: set[str] = set()
 
 NOISE = re.compile(r"fontconfig|invalid (attribute|constant)", re.I)
+
+
+def run_raw(args: list[str]) -> str:
+    """Like run(), but keeps kicad-cli's own warnings."""
+    r = subprocess.run(args, capture_output=True, text=True)
+    return "\n".join(l for l in (r.stdout + r.stderr).splitlines()
+                      if not NOISE.search(l))
 
 
 def run(args: list[str]) -> str:
@@ -153,17 +163,7 @@ def main() -> int:
             fails.append("self-test: no PWR_FLAG on sheet 02 to remove")
         else:
             start = s.rfind("\t(symbol\n", 0, i)
-            depth, j = 0, start
-            while True:
-                if s[j] == "(":
-                    depth += 1
-                elif s[j] == ")":
-                    depth -= 1
-                    if depth == 0:
-                        j += 1
-                        break
-                j += 1
-            p.write_text(s[:start] + s[j:])
+            p.write_text(s[:start] + s[_sexp_end(s, start):])
             rpt = copy / "erc.rpt"
             run(["kicad-cli", "sch", "erc", "--output", str(rpt),
                  "--severity-all", str(copy / "dshot-esc-100a.kicad_sch")])
@@ -173,6 +173,51 @@ def main() -> int:
             if not n:
                 fails.append("ERC self-test found nothing -- ERC is NOT live, "
                              "so the clean run above is meaningless")
+
+    # 6 -- annotation. Every reference unique project-wide, none left as
+    # "?", and kicad-cli itself silent. Power symbols are the trap here:
+    # numbering them per sheet gives six #PWR0001s, which KiCad reports as
+    # an annotation error and which breaks "Update PCB from Schematic",
+    # because that keys on the reference designator.
+    print("6. annotation")
+    # A reference may legitimately repeat -- but only as a DIFFERENT unit
+    # of the same multi-unit symbol (U201 is three units across two
+    # sheets). So the thing that must be unique is the (ref, unit) pair.
+    seen: dict[tuple[str, str], list[str]] = {}
+    unannotated: list[str] = []
+    for f in sorted(DESIGN.glob("*.kicad_sch")):
+        text = f.read_text()
+        for m in re.finditer(r"^\t\(symbol\n", text, re.M):
+            # Naive paren counting breaks here: the MPN "TPHR8504PL,L1Q(M"
+            # contains an unmatched '(' inside a quoted string.
+            blk = text[m.start():_sexp_end(text, m.start())]
+            rm = re.search(r'\(property "Reference" "([^"]+)"', blk)
+            if not rm:
+                continue
+            ref = rm.group(1)
+            um = re.search(r"\(unit (\d+)\)", blk)
+            unit = um.group(1) if um else "1"
+            if ref.endswith("?"):
+                unannotated.append(f"{f.name}: {ref}")
+            seen.setdefault((ref, unit), []).append(f.name)
+
+    dupes = {k: v for k, v in seen.items() if len(v) > 1}
+    total = sum(len(v) for v in seen.values())
+    ok = not dupes and not unannotated
+    print(f"   {'ok ' if ok else 'FAIL'} {total} placements, "
+          f"{len(seen)} distinct (ref, unit) pairs, {len(dupes)} duplicated, "
+          f"{len(unannotated)} unannotated")
+    fails += [f"reference {r} unit {u} placed on {v}"
+              for (r, u), v in list(dupes.items())[:8]]
+    fails += unannotated[:8]
+
+    warn = [l for l in run_raw(["kicad-cli", "sch", "export", "netlist",
+                                "--format", "kicadxml", "--output",
+                                "/dev/null", str(SCH)]).splitlines()
+            if "annotation" in l.lower()]
+    print(f"   {'ok ' if not warn else 'FAIL'} kicad-cli annotation check"
+          f"{'' if not warn else ': ' + warn[0]}")
+    fails += warn
 
     print()
     if fails:
