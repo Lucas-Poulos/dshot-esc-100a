@@ -80,9 +80,9 @@ PASSIVES: dict[str, tuple[str, str, str, str, str]] = {
 
 # ACTIVES: key -> (lib_id, value, footprint, MPN, LCSC, datasheet key)
 FP_DRV = ("Package_DFN_QFN:Texas_RGZ0048A_VQFN-48-1EP_7x7mm_P0.5mm"
-          "_EP5.15x5.15mm_ThermalVias")
+          "_EP5.15x5.15mm")
 FP_FET = "Package_DFN_QFN:PQFN-8-EP_6x5mm_P1.27mm_Generic"
-FP_WIRE = "Connector_Wire:SolderWire-2.5sqmm_1x01_D2.4mm_OD3.6mm_Relief"
+FP_WIRE = "dshot-esc-100a:HighCurrentTerminal_8AWG"   # ESC-004 resolved
 
 ACTIVES: dict[str, tuple[str, str, str, str, str, str]] = {
     "DRV":  (f"{PROJ_LIB}:DRV8323R", "DRV8323RS", FP_DRV,

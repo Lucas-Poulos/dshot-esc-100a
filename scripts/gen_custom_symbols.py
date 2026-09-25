@@ -48,7 +48,7 @@ DS_DRV = "https://www.ti.com/lit/ds/symlink/drv8323.pdf"
 DS_STM = "https://www.st.com/resource/en/datasheet/stm32g071cb.pdf"
 
 FP_DRV = ("Package_DFN_QFN:Texas_RGZ0048A_VQFN-48-1EP_7x7mm_P0.5mm"
-          "_EP5.15x5.15mm_ThermalVias")
+          "_EP5.15x5.15mm")
 FP_STM = "Package_QFP:LQFP-48_7x7mm_P0.5mm"
 
 # --------------------------------------------------------------------------

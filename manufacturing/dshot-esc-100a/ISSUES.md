@@ -46,16 +46,29 @@ on this package. Not yet confirmed against DS12232.
 latency instead of being instantaneous. The board is still protected by
 dead-time layers 1-4; only layer 0 degrades.
 
-## ESC-004 — High-current terminals use a placeholder footprint  ·  OPEN  ·  high
+## ESC-004 — High-current terminals  ·  RESOLVED  ·  2026-09-25
 
-`J101`, `J102`, `J301-J303` currently carry
-`Connector_Wire:SolderWire-2.5sqmm_1x01_D2.4mm_OD3.6mm_Relief`. **2.5 mm²
-is ~14 AWG, good for ~25 A** — nowhere near the 100 A these terminals
-carry.
+The placeholder `SolderWire-2.5sqmm` footprint was good for ~25 A and its
+strain-relief tail was 25 mm long, which made it unplaceable.
 
-**Action:** draw a custom land pattern for the PCB pass — a large tinned
-copper area (~10 × 8 mm, mask-free) per terminal for direct 8 AWG wire
-soldering, which is standard ESC practice. Blocks the PCB pass.
+Replaced with `dshot-esc-100a:HighCurrentTerminal_8AWG`
+(`scripts/gen_footprints.py`): a 3.6 mm plated hole for 8 AWG conductor
+(3.26 mm) with a 9 mm annular pad on **both** outer layers, solder mask
+pulled back so the joint can be flooded. ~50 mm² of copper per terminal
+spreading into the pour.
+
+Applied to `J101`, `J102`, `J301-J303` in the schematic, the parts
+catalogue and the PCB.
+
+## ESC-013 — 2 oz copper vs the driver's thermal-via footprint  ·  RESOLVED  ·  2026-09-25
+
+KiCad's `..._ThermalVias` variant of the DRV8323R land pattern embeds
+0.2 mm vias. This board is 2 oz outer copper, where 0.3 mm is the
+realistic fab minimum, and DRC flagged 25 `drill_out_of_range` errors.
+
+Switched to the plain `Texas_RGZ0048A_VQFN-48-1EP_7x7mm_P0.5mm_EP5.15x5.15mm`
+land pattern. A 0.3 mm thermal via array gets placed by hand during
+routing — see `docs/layout.md` rule 6.
 
 ## ESC-005 — Shunt Kelvin connection not yet expressed  ·  OPEN  ·  medium
 
@@ -122,9 +135,11 @@ potentially damaging to a LiPo in flight.
 
 ## ESC-012 — Thermal design is stated, not simulated  ·  OPEN  ·  medium
 
-`docs/power-budget.md` puts ~19 W at 100 A continuous into roughly
-50 × 35 mm of 4-layer 2 oz board — about 1.1 W/cm². That is explicitly
-**not passively coolable**; the design assumes propwash or forced air.
+`docs/power-budget.md` puts ~19 W at 100 A continuous into the board. The
+outline is now fixed at **80 × 68 mm**, which is 0.35 W/cm² rather than
+the 1.1 W/cm² the original 50 × 35 mm estimate assumed — better, but
+still **not passively coolable**; the design assumes propwash or forced
+air.
 
 No thermal simulation has been run and no copper area has been sized. The
 150 A figure is a 10-second burst bounded by thermal mass, not a steady

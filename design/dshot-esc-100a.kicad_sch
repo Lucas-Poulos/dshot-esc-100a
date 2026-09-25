@@ -1,6 +1,6 @@
 (kicad_sch
 	(version 20260306)
-	(generator "gen_project.py")
+	(generator "eeschema")
 	(generator_version "10.0")
 	(uuid "46dd23bb-8f57-5774-b03d-be2394e580e1")
 	(paper "A2")
@@ -12,6 +12,39 @@
 		(comment 2 "STM32G071CBT6 + DRV8323R | 12x TPHR8504PL | DShot via AM32")
 	)
 	(lib_symbols)
+	(text "  2  DRV8323R internal cross-conduction lockout + 100 ns"
+		(exclude_from_sim yes)
+		(at 30 311 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+			)
+			(justify left bottom)
+		)
+		(uuid "058763ee-a2d7-5faa-8969-dee92a1c5aee")
+	)
+	(text "Full budget and derivation: docs/shoot-through.md"
+		(exclude_from_sim yes)
+		(at 30 333 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+			)
+			(justify left bottom)
+		)
+		(uuid "302dbb0b-5768-544c-abf0-66fdecabd5bc")
+	)
+	(text "dissipated. Needs forced air -- see docs/power-budget.md."
+		(exclude_from_sim yes)
+		(at 300 306 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+			)
+			(justify left bottom)
+		)
+		(uuid "36edab1a-6e89-540d-9e0c-3e910a901150")
+	)
 	(text "12 V / 100 A THREE-PHASE ALL-NMOS MOTOR DRIVER"
 		(exclude_from_sim yes)
 		(at 30 22 0)
@@ -24,17 +57,6 @@
 		)
 		(uuid "3c59ef7b-ce32-544e-ab5d-66891c33c9a5")
 	)
-	(text "DShot150/300/600/1200 via AM32 | STM32G071CBT6 + DRV8323R | 12x N-channel MOSFET, 2 per switch position"
-		(exclude_from_sim yes)
-		(at 30 30 0)
-		(effects
-			(font
-				(size 2.2 2.2)
-			)
-			(justify left bottom)
-		)
-		(uuid "abba4e1a-eb75-5a39-b151-1123898a8c07")
-	)
 	(text "Rev A.1"
 		(exclude_from_sim yes)
 		(at 30 36 0)
@@ -45,6 +67,39 @@
 			(justify left bottom)
 		)
 		(uuid "485d5614-2eca-56f0-9717-fccacc9ab4ad")
+	)
+	(text "See firmware/README.md for the target block and the"
+		(exclude_from_sim yes)
+		(at 300 321 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+			)
+			(justify left bottom)
+		)
+		(uuid "5f8c48c3-d88d-5bf6-8efd-94d49b34403e")
+	)
+	(text "DRV8323RS SPI init that AM32 does not ship."
+		(exclude_from_sim yes)
+		(at 300 326 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+			)
+			(justify left bottom)
+		)
+		(uuid "65706e05-bc71-547f-8c88-bdc48cbe8493")
+	)
+	(text "  4  gate-source pulldowns + per-FET series gate resistors"
+		(exclude_from_sim yes)
+		(at 30 321 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+			)
+			(justify left bottom)
+		)
+		(uuid "707e28d3-f5d4-5bec-9e65-e0d2a43333dc")
 	)
 	(text "SHOOT-THROUGH is prevented in four independent layers:"
 		(exclude_from_sim yes)
@@ -69,38 +124,27 @@
 		)
 		(uuid "877fe7ad-d5af-53df-b556-cf2c3a3c3692")
 	)
-	(text "  2  DRV8323R internal cross-conduction lockout + 100 ns"
+	(text "Firmware: AM32, HARDWARE_GROUP_G0_A + NO_PA11_PA12_REMAP."
 		(exclude_from_sim yes)
-		(at 30 311 0)
+		(at 300 316 0)
 		(effects
 			(font
 				(size 1.8 1.8)
 			)
 			(justify left bottom)
 		)
-		(uuid "058763ee-a2d7-5faa-8969-dee92a1c5aee")
+		(uuid "a8e638fe-6244-5ad4-904e-1dfd3fc43886")
 	)
-	(text "  3  6x SN74LVC1G97 combinational interlock (sheet 06)"
+	(text "DShot150/300/600/1200 via AM32 | STM32G071CBT6 + DRV8323R | 12x N-channel MOSFET, 2 per switch position"
 		(exclude_from_sim yes)
-		(at 30 316 0)
+		(at 30 30 0)
 		(effects
 			(font
-				(size 1.8 1.8)
+				(size 2.2 2.2)
 			)
 			(justify left bottom)
 		)
-		(uuid "da679302-fd89-5118-ad3f-8a8a3d309de5")
-	)
-	(text "  4  gate-source pulldowns + per-FET series gate resistors"
-		(exclude_from_sim yes)
-		(at 30 321 0)
-		(effects
-			(font
-				(size 1.8 1.8)
-			)
-			(justify left bottom)
-		)
-		(uuid "707e28d3-f5d4-5bec-9e65-e0d2a43333dc")
+		(uuid "abba4e1a-eb75-5a39-b151-1123898a8c07")
 	)
 	(text "  0  nFAULT -> PB12/TIM1_BKIN kills all 6 outputs in hardware"
 		(exclude_from_sim yes)
@@ -113,16 +157,16 @@
 		)
 		(uuid "c873c27d-4ae5-5f0f-8ae7-d9c39010ca3b")
 	)
-	(text "Full budget and derivation: docs/shoot-through.md"
+	(text "  3  6x SN74LVC1G97 combinational interlock (sheet 06)"
 		(exclude_from_sim yes)
-		(at 30 333 0)
+		(at 30 316 0)
 		(effects
 			(font
 				(size 1.8 1.8)
 			)
 			(justify left bottom)
 		)
-		(uuid "302dbb0b-5768-544c-abf0-66fdecabd5bc")
+		(uuid "da679302-fd89-5118-ad3f-8a8a3d309de5")
 	)
 	(text "100 A continuous / 150 A burst at 12.6 V = ~19 W / ~40 W"
 		(exclude_from_sim yes)
@@ -136,64 +180,26 @@
 		)
 		(uuid "e4c205fc-43e3-573e-88e8-75d9c64120fd")
 	)
-	(text "dissipated. Needs forced air -- see docs/power-budget.md."
-		(exclude_from_sim yes)
-		(at 300 306 0)
-		(effects
-			(font
-				(size 1.8 1.8)
-			)
-			(justify left bottom)
-		)
-		(uuid "36edab1a-6e89-540d-9e0c-3e910a901150")
-	)
-	(text "Firmware: AM32, HARDWARE_GROUP_G0_A + NO_PA11_PA12_REMAP."
-		(exclude_from_sim yes)
-		(at 300 316 0)
-		(effects
-			(font
-				(size 1.8 1.8)
-			)
-			(justify left bottom)
-		)
-		(uuid "a8e638fe-6244-5ad4-904e-1dfd3fc43886")
-	)
-	(text "See firmware/README.md for the target block and the"
-		(exclude_from_sim yes)
-		(at 300 321 0)
-		(effects
-			(font
-				(size 1.8 1.8)
-			)
-			(justify left bottom)
-		)
-		(uuid "5f8c48c3-d88d-5bf6-8efd-94d49b34403e")
-	)
-	(text "DRV8323RS SPI init that AM32 does not ship."
-		(exclude_from_sim yes)
-		(at 300 326 0)
-		(effects
-			(font
-				(size 1.8 1.8)
-			)
-			(justify left bottom)
-		)
-		(uuid "65706e05-bc71-547f-8c88-bdc48cbe8493")
-	)
 	(sheet
-		(at 30 40)
+		(at 105 95)
 		(size 60 35)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
-		(uuid "ee8709ba-05ec-50e9-b1aa-1697f3486e86")
-		(property "Sheetname" "Power Input"
-			(at 30 38.5 0)
+		(uuid "0f1c1bae-00ad-564b-8747-383cfc0740c5")
+		(property "Sheetname" "Sense"
+			(at 105 93.5 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -201,8 +207,10 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "01_power_in.kicad_sch"
-			(at 30 76.5 0)
+		(property "Sheetfile" "05_sense.kicad_sch"
+			(at 105 131.5 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -213,45 +221,7 @@
 		(instances
 			(project "dshot-esc-100a"
 				(path "/46dd23bb-8f57-5774-b03d-be2394e580e1"
-					(page "1")
-				)
-			)
-		)
-	)
-	(sheet
-		(at 105 40)
-		(size 60 35)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0.0000)
-		)
-		(uuid "c9ea7a45-cf65-5419-8006-1a33cd6d1f0c")
-		(property "Sheetname" "Gate Driver"
-			(at 105 38.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "02_gate_driver.kicad_sch"
-			(at 105 76.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(instances
-			(project "dshot-esc-100a"
-				(path "/46dd23bb-8f57-5774-b03d-be2394e580e1"
-					(page "2")
+					(page "5")
 				)
 			)
 		)
@@ -259,17 +229,23 @@
 	(sheet
 		(at 180 40)
 		(size 60 35)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "106961b4-b545-5108-bebb-7468223e3c72")
 		(property "Sheetname" "Power Stage"
 			(at 180 38.5 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -279,6 +255,8 @@
 		)
 		(property "Sheetfile" "03_power_stage.kicad_sch"
 			(at 180 76.5 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -297,17 +275,23 @@
 	(sheet
 		(at 30 95)
 		(size 60 35)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "4271ff02-915a-541e-85bd-e8baa7d2d921")
 		(property "Sheetname" "MCU"
 			(at 30 93.5 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -317,6 +301,8 @@
 		)
 		(property "Sheetfile" "04_mcu.kicad_sch"
 			(at 30 131.5 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -333,57 +319,25 @@
 		)
 	)
 	(sheet
-		(at 105 95)
-		(size 60 35)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0.0000)
-		)
-		(uuid "0f1c1bae-00ad-564b-8747-383cfc0740c5")
-		(property "Sheetname" "Sense"
-			(at 105 93.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "05_sense.kicad_sch"
-			(at 105 131.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(instances
-			(project "dshot-esc-100a"
-				(path "/46dd23bb-8f57-5774-b03d-be2394e580e1"
-					(page "5")
-				)
-			)
-		)
-	)
-	(sheet
 		(at 180 95)
 		(size 60 35)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "8bb87021-3dd0-5b50-b966-eec5ec0d1845")
 		(property "Sheetname" "Protection"
 			(at 180 93.5 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -393,6 +347,8 @@
 		)
 		(property "Sheetfile" "06_protection.kicad_sch"
 			(at 180 131.5 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -408,9 +364,102 @@
 			)
 		)
 	)
+	(sheet
+		(at 105 40)
+		(size 60 35)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "c9ea7a45-cf65-5419-8006-1a33cd6d1f0c")
+		(property "Sheetname" "Gate Driver"
+			(at 105 38.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "02_gate_driver.kicad_sch"
+			(at 105 76.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "dshot-esc-100a"
+				(path "/46dd23bb-8f57-5774-b03d-be2394e580e1"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 30 40)
+		(size 60 35)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "ee8709ba-05ec-50e9-b1aa-1697f3486e86")
+		(property "Sheetname" "Power Input"
+			(at 30 38.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "01_power_in.kicad_sch"
+			(at 30 76.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "dshot-esc-100a"
+				(path "/46dd23bb-8f57-5774-b03d-be2394e580e1"
+					(page "7")
+				)
+			)
+		)
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")
 		)
 	)
+	(embedded_fonts no)
 )

@@ -14,8 +14,8 @@ drone motor, controllable over **DShot150/300/600/1200**.
 | Control | DShot150/300/600/1200, bidirectional, + ESC telemetry |
 | Efficiency | ~98.5 % at 100 A (≈19 W dissipated) |
 
-**Status: schematic complete, ERC-clean, 160 components. PCB layout not
-started.**
+**Status: schematic complete and ERC-clean (160 components). PCB floorplanned
+and DRC-clean — 80 × 68 mm, 4 layers, 2 oz outer. Routing not started.**
 
 ---
 
@@ -61,6 +61,7 @@ the FET's measured gate charge: **[`docs/shoot-through.md`](docs/shoot-through.m
 | [`docs/power-budget.md`](docs/power-budget.md) | conduction/switching/shunt losses, thermals, why 2 FETs not 3 |
 | [`docs/pinout.md`](docs/pinout.md) | full 48-pin MCU map + AM32 hardware group |
 | [`docs/gate-driver-config.md`](docs/gate-driver-config.md) | RH vs RS dual build, every register value derived |
+| [`docs/layout.md`](docs/layout.md) | stackup, floorplan, and the routing rules — **read before routing** |
 | [`docs/references.md`](docs/references.md) | every datasheet and firmware source used |
 | [`firmware/README.md`](firmware/README.md) | AM32 target, SPI init, flashing, **bring-up order** |
 | [`manufacturing/BOM.md`](manufacturing/BOM.md) | generated from the netlist, real LCSC numbers |
@@ -69,13 +70,14 @@ the FET's measured gate charge: **[`docs/shoot-through.md`](docs/shoot-through.m
 ## Repository layout
 
 ```
-design/          GENERATED KiCad 10 project — never save from the GUI
+design/          GENERATED KiCad 10 project — schematic never saved from the GUI
   01_power_in  02_gate_driver  03_power_stage
   04_mcu       05_sense        06_protection
   lib/         DRV8323R + STM32G071CBTx symbols
 scripts/        the source of truth for everything in design/
   gen_custom_symbols.py  gen_project.py  wire_sheets.py
-  verify_project.py      gen_bom.py      calc_*.py
+  gen_footprints.py      gen_pcb.py      verify_project.py
+  gen_bom.py             calc_*.py
   kicad_sch.py           kicad_symlib.py
 docs/           design documentation
 firmware/       AM32 target + DRV8323RS SPI driver
@@ -103,14 +105,16 @@ python3 scripts/calc_power.py       # loss and thermal budget
 
 ## Before you build one
 
-Read [`ISSUES.md`](manufacturing/dshot-esc-100a/ISSUES.md). The three that
-block fabrication:
+Read [`ISSUES.md`](manufacturing/dshot-esc-100a/ISSUES.md). 11 open, 2
+resolved. The ones that still matter most:
 
-- **ESC-004** — the high-current terminals still use a 2.5 mm² placeholder
-  footprint, good for ~25 A, not 100 A.
 - **ESC-001** — the input ripple budget (~50 A RMS) isn't closed.
-- **ESC-012** — 19 W into ~50 × 35 mm is **not** passively coolable; this
-  design assumes forced air.
+- **ESC-005** — the shunt needs a Kelvin sense tap in layout; at 0.25 mΩ
+  a few mΩ of shared trace is a large error.
+- **ESC-012** — 19 W is **not** passively coolable; this design assumes
+  forced air.
+- **ESC-007** — the buck feedback divider is unverified. Check it before
+  first power-on or the MCU may sit outside its supply range.
 
 And follow the bring-up order in `firmware/README.md`. Do not put a motor
 on this board first.

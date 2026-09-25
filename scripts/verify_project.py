@@ -35,6 +35,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DESIGN = ROOT / "design"
 SCH = DESIGN / "dshot-esc-100a.kicad_sch"
 STOCK_FP = Path("/Applications/KiCad/KiCad.app/Contents/SharedSupport/footprints")
+PROJ_FP = ROOT / "design" / "lib"        # project-local .pretty libraries
 
 EXPECT_COMPONENTS = 160
 EXPECT_SHEETS = {
@@ -132,7 +133,9 @@ def main() -> int:
             missing.append(f"{c.get('ref')} footprint {fp!r} has no library")
             continue
         lib, name = fp.split(":", 1)
-        if not (STOCK_FP / f"{lib}.pretty" / f"{name}.kicad_mod").exists():
+        found = any((base / f"{lib}.pretty" / f"{name}.kicad_mod").exists()
+                    for base in (STOCK_FP, PROJ_FP))
+        if not found:
             missing.append(f"{c.get('ref')}: {fp} not found on disk")
     print(f"   {'ok ' if not missing else 'FAIL'} "
           f"{len(comps) - len(missing)} / {len(comps)} resolve")
