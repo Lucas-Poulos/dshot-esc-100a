@@ -1,0 +1,256 @@
+{
+  "board": {
+    "design_settings": {
+      "defaults": {},
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
+      "rules": {},
+      "track_widths": [],
+      "via_dimensions": []
+    }
+  },
+  "boards": [],
+  "libraries": {
+    "pinned_footprint_libs": [],
+    "pinned_symbol_libs": []
+  },
+  "meta": {
+    "filename": "dshot-esc-100a.kicad_pro",
+    "version": 1
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Default",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.25,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Power",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.5,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "DDR3",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.1,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.13,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.1,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "DDR3_DIFF",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.1,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.13,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB_HS",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.15,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Ethernet",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      }
+    ],
+    "meta": {
+      "version": 4
+    },
+    "netclass_patterns": [
+      {
+        "netclass": "DDR3_DIFF",
+        "pattern": "/^DDR_(CK|DQS)/"
+      },
+      {
+        "netclass": "DDR3",
+        "pattern": "/^DDR_/"
+      },
+      {
+        "netclass": "USB_HS",
+        "pattern": "/^(OTG|USB[0-9]*)_D[PM]$/"
+      },
+      {
+        "netclass": "Ethernet",
+        "pattern": "/^(RMII|ETH)_/"
+      },
+      {
+        "netclass": "Ethernet",
+        "pattern": "/^TD[PN]$|^RD[PN]$/"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "VDDCORE"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "VDD_DDR"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "VDD"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "V3V3"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "V3V3_AUX"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "V1V8"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "V1V2"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "VDDA"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "VDD_USB"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "VTT_DDR"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "BST_5V"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "VBUS_IN"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "VIN_5V"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "VBUS_OTG"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "VBUS_SW"
+      }
+    ]
+  },
+  "pcbnew": {
+    "page_layout_descr_file": ""
+  },
+  "schematic": {
+    "annotate_start_num": 0,
+    "legacy_lib_dir": "",
+    "legacy_lib_list": [],
+    "net_format_name": "",
+    "page_layout_descr_file": "",
+    "plot_directory": "",
+    "subpart_first_id": 65,
+    "subpart_id_separator": 0
+  },
+  "sheets": [
+    [
+      "46dd23bb-8f57-5774-b03d-be2394e580e1",
+      "Root"
+    ],
+    [
+      "ee8709ba-05ec-50e9-b1aa-1697f3486e86",
+      "Power Input"
+    ],
+    [
+      "c9ea7a45-cf65-5419-8006-1a33cd6d1f0c",
+      "Gate Driver"
+    ],
+    [
+      "106961b4-b545-5108-bebb-7468223e3c72",
+      "Power Stage"
+    ],
+    [
+      "4271ff02-915a-541e-85bd-e8baa7d2d921",
+      "MCU"
+    ],
+    [
+      "0f1c1bae-00ad-564b-8747-383cfc0740c5",
+      "Sense"
+    ],
+    [
+      "8bb87021-3dd0-5b50-b966-eec5ec0d1845",
+      "Protection"
+    ]
+  ],
+  "text_variables": {}
+}

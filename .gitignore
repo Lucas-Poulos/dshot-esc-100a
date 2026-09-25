@@ -1,0 +1,29 @@
+# KiCad
+*-backups/
+*.kicad_prl
+*.kicad_sch-bak
+*.kicad_pcb-bak
+fp-info-cache
+~*
+*.lck
+.history/
+
+# Python
+__pycache__/
+*.pyc
+
+# Generated analysis runs (manifest + latest are kept by hand)
+analysis/*/
+!analysis/.gitkeep
+
+# Datasheet PDFs are large; tracked selectively
+manufacturing/parts/**/*.pdf
+
+# OS
+.DS_Store
+
+# Synced datasheet PDFs: 62 MB, re-fetchable in one command.
+# The manifest is tracked so `sync_datasheets_lcsc.py` can restore them:
+#   python3 ~/.claude/skills/lcsc/scripts/sync_datasheets_lcsc.py \
+#       design/dshot-esc-100a.kicad_sch --output datasheets/
+datasheets/*.pdf

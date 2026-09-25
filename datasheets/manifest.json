@@ -1,0 +1,436 @@
+{
+  "schematic": "design/dshot-esc-100a.kicad_sch",
+  "last_sync": "2026-09-25T20:04:27.084198+00:00",
+  "parts": {
+    "SPZ1EM331F11O00R": {
+      "file": "SPZ1EM331F11O00R_330uF_\u00b120%_25V_Through_Hole_D8xL11mm_2000hrs@105\u2103.pdf",
+      "manufacturer": "AISHI",
+      "description": "330uF \u00b120% 25V Through Hole,D8xL11mm 2000hrs@105\u2103",
+      "value": "330u/25V",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/944d5684d6a147c483e2714d03cea19b.pdf?productCode=C160677",
+      "downloaded_date": "2026-09-25T20:03:14.797950+00:00",
+      "source": "lcsc",
+      "lcsc": "C160677",
+      "status": "ok",
+      "references": [
+        "C101",
+        "C102",
+        "C103"
+      ],
+      "size_bytes": 721749,
+      "verification": "verified"
+    },
+    "GRM32DR71E106KA12L": {
+      "file": "GRM32DR71E106KA12L_10uF_\u00b110%_25V_Ceramic_Capacitor_X7R_1210.pdf",
+      "manufacturer": "muRata",
+      "description": "10uF \u00b110% 25V Ceramic Capacitor X7R 1210",
+      "value": "10u",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/a4d1e2744bd5d44ba57842651a3fd598.pdf?productCode=C77100",
+      "downloaded_date": "2026-09-25T20:03:17.192368+00:00",
+      "source": "lcsc",
+      "lcsc": "C77100",
+      "status": "ok",
+      "references": [
+        "C104",
+        "C105",
+        "C106",
+        "C107",
+        "C108",
+        "C109",
+        "C110",
+        "C111",
+        "C112",
+        "C113",
+        "C114",
+        "C115",
+        "C116",
+        "C117",
+        "C118",
+        "C119",
+        "C120",
+        "C121",
+        "C122",
+        "C123",
+        "C124",
+        "C125",
+        "C126",
+        "C127",
+        "C204",
+        "C206"
+      ],
+      "size_bytes": 10764016,
+      "verification": "unverified"
+    },
+    "CL10B473KB8NNNC": {
+      "file": "CL10B473KB8NNNC_47nF_\u00b110%_50V_Ceramic_Capacitor_X7R_0603.pdf",
+      "manufacturer": "Samsung Electro-Mechanics",
+      "description": "47nF \u00b110% 50V Ceramic Capacitor X7R 0603",
+      "value": "47n/50V",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/02336ea48ea44ca18c72517dd3cb7b47.pdf?productCode=C1622",
+      "downloaded_date": "2026-09-25T20:03:19.267102+00:00",
+      "source": "lcsc",
+      "lcsc": "C1622",
+      "status": "ok",
+      "references": [
+        "C201"
+      ],
+      "size_bytes": 7856403,
+      "verification": "unverified"
+    },
+    "CL10B105KA8NNNC": {
+      "file": "CL10B105KA8NNNC_1uF_\u00b110%_25V_Ceramic_Capacitor_X7R_0603.pdf",
+      "manufacturer": "Samsung Electro-Mechanics",
+      "description": "1uF \u00b110% 25V Ceramic Capacitor X7R 0603",
+      "value": "1u VREF+",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/02336ea48ea44ca18c72517dd3cb7b47.pdf?productCode=C29936",
+      "downloaded_date": "2026-09-25T20:03:31.247644+00:00",
+      "source": "lcsc",
+      "lcsc": "C29936",
+      "status": "ok",
+      "references": [
+        "C405"
+      ],
+      "size_bytes": 7856403,
+      "verification": "unverified"
+    },
+    "CC0603KRX7R9BB104": {
+      "file": "CC0603KRX7R9BB104_100nF_\u00b110%_50V_Ceramic_Capacitor_X7R_0603.pdf",
+      "manufacturer": "YAGEO",
+      "description": "100nF \u00b110% 50V Ceramic Capacitor X7R 0603",
+      "value": "100n VREF",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/23ccee80ee542e7cf156a772bb589942.pdf?productCode=C14663",
+      "downloaded_date": "2026-09-25T20:03:33.837796+00:00",
+      "source": "lcsc",
+      "lcsc": "C14663",
+      "status": "ok",
+      "references": [
+        "C503"
+      ],
+      "size_bytes": 1131214,
+      "verification": "likely"
+    },
+    "CL21B475KAFNNNE": {
+      "file": "CL21B475KAFNNNE_4.7uF_\u00b110%_25V_Ceramic_Capacitor_X7R_0805.pdf",
+      "manufacturer": "Samsung Electro-Mechanics",
+      "description": "4.7uF \u00b110% 25V Ceramic Capacitor X7R 0805",
+      "value": "4.7u",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/02336ea48ea44ca18c72517dd3cb7b47.pdf?productCode=C98195",
+      "downloaded_date": "2026-09-25T20:03:27.218533+00:00",
+      "source": "lcsc",
+      "lcsc": "C98195",
+      "status": "ok",
+      "references": [
+        "C207",
+        "C403"
+      ],
+      "size_bytes": 7856403,
+      "verification": "unverified"
+    },
+    "SMBJ20A": {
+      "file": "SMBJ20A_32.4VC_Clamp_18.6A_Ipp_TVS_DIODE_DO-214AA(SMB).pdf",
+      "manufacturer": "MDD(Microdiode Semiconductor)",
+      "description": "32.4VC Clamp 18.6A Ipp TVS DIODE DO-214AA(SMB)",
+      "value": "SMBJ20A",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/2fdb55289569ebfc0bc21eab3853afe6.pdf?productCode=C364296",
+      "downloaded_date": "2026-09-25T20:03:34.822148+00:00",
+      "source": "lcsc",
+      "lcsc": "C364296",
+      "status": "ok",
+      "references": [
+        "D101"
+      ],
+      "size_bytes": 1215362,
+      "verification": "verified"
+    },
+    "B5819W SL": {
+      "file": "B5819W_SL_Diode_40V_1A_Surface_Mount_SOD-123.pdf",
+      "manufacturer": "JSCJ",
+      "description": "Diode 40V 1A Surface Mount SOD-123",
+      "value": "B5819W",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/4ac2c059be7c462694ab0715ce987a85.pdf?productCode=C8598",
+      "downloaded_date": "2026-09-25T20:03:36.315797+00:00",
+      "source": "lcsc",
+      "lcsc": "C8598",
+      "status": "ok",
+      "references": [
+        "D201",
+        "D301",
+        "D302",
+        "D303",
+        "D304",
+        "D305",
+        "D306"
+      ],
+      "size_bytes": 745783,
+      "verification": "likely"
+    },
+    "XL-1608UGC-04": {
+      "file": "XL-1608UGC-04_Emerald_Green_525nm_LED_Indication_-_Discrete_3.3V_0603.pdf",
+      "manufacturer": "XINGLIGHT",
+      "description": "Emerald Green 525nm LED Indication - Discrete 3.3V 0603",
+      "value": "green",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/6b7293b42c3b9e043993e4b0f98f47bf.pdf?productCode=C965804",
+      "downloaded_date": "2026-09-25T20:03:37.451155+00:00",
+      "source": "lcsc",
+      "lcsc": "C965804",
+      "status": "ok",
+      "references": [
+        "D401"
+      ],
+      "size_bytes": 1627564,
+      "verification": "unverified"
+    },
+    "-": {
+      "manufacturer": "",
+      "description": "",
+      "value": "SIGNAL",
+      "references": [
+        "J402"
+      ],
+      "status": "not_found",
+      "error": "No LCSC results for '-'",
+      "last_attempt": "2026-09-25T20:03:42.422742+00:00"
+    },
+    "SLS6D38S330MTT": {
+      "file": "SLS6D38S330MTT_1.1A_124m\u03a9_33uH_Magnetic_Shielded_Inductor_\u00b120%_SMD_7x7mm_Power_Inductors_ROHS.pdf",
+      "manufacturer": "Sunltech",
+      "description": "1.1A 124m\u03a9 33uH Magnetic Shielded Inductor \u00b120% SMD,7x7mm Power Inductors ROHS",
+      "value": "33u",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/749be448364d4665171edcfe0f7e9fd7.pdf?productCode=C364136",
+      "downloaded_date": "2026-09-25T20:03:43.003467+00:00",
+      "source": "lcsc",
+      "lcsc": "C364136",
+      "status": "ok",
+      "references": [
+        "L201"
+      ],
+      "size_bytes": 1080097,
+      "verification": "likely"
+    },
+    "TPHR8504PL,L1Q(M": {
+      "file": "TPHR8504PL_L1Q(M_N-Channel_40V_340A_170W_Surface_Mount_SOP-8.pdf",
+      "manufacturer": "TOSHIBA",
+      "description": "N-Channel 40V 340A 170W Surface Mount SOP-8",
+      "value": "TPHR8504PL",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/e632c1c1786990bee1ad962cf1a52f4b.pdf?productCode=C5331611",
+      "downloaded_date": "2026-09-25T20:03:44.853077+00:00",
+      "source": "lcsc",
+      "lcsc": "C5331611",
+      "status": "ok",
+      "references": [
+        "Q301",
+        "Q303",
+        "Q302",
+        "Q304",
+        "Q305",
+        "Q307",
+        "Q306",
+        "Q308",
+        "Q309",
+        "Q311",
+        "Q310",
+        "Q312"
+      ],
+      "size_bytes": 629552,
+      "verification": "likely"
+    },
+    "FRC0603F3322TS": {
+      "file": "FRC0603F3322TS_33.2k\u03a9_\u00b11%_100mW_0603_Thick_Film_Resistor.pdf",
+      "manufacturer": "FOJAN",
+      "description": "33.2k\u03a9 \u00b11% 100mW 0603 Thick Film Resistor",
+      "value": "33.2k",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/106fb934f95f063b695dad1b31b1eab8.pdf?productCode=C2933200",
+      "downloaded_date": "2026-09-25T20:03:46.484455+00:00",
+      "source": "lcsc",
+      "lcsc": "C2933200",
+      "status": "ok",
+      "references": [
+        "R201"
+      ],
+      "size_bytes": 1678891,
+      "verification": "likely"
+    },
+    "FRC0603F1002TS": {
+      "file": "FRC0603F1002TS_10k\u03a9_\u00b11%_100mW_0603_Thick_Film_Resistor.pdf",
+      "manufacturer": "FOJAN",
+      "description": "10k\u03a9 \u00b11% 100mW 0603 Thick Film Resistor",
+      "value": "10k EN pd",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/106fb934f95f063b695dad1b31b1eab8.pdf?productCode=C2906982",
+      "downloaded_date": "2026-09-25T20:03:55.060252+00:00",
+      "source": "lcsc",
+      "lcsc": "C2906982",
+      "status": "ok",
+      "references": [
+        "R209"
+      ],
+      "size_bytes": 1678891,
+      "verification": "likely"
+    },
+    "0603WAF1003T5E": {
+      "file": "0603WAF1003T5E_100k\u03a9_\u00b11%_100mW_0603_Thick_Film_Resistor.pdf",
+      "manufacturer": "UNI-ROYAL",
+      "description": "100k\u03a9 \u00b11% 100mW 0603 Thick Film Resistor",
+      "value": "100k",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C25803",
+      "downloaded_date": "2026-09-25T20:03:56.007478+00:00",
+      "source": "lcsc",
+      "lcsc": "C25803",
+      "status": "ok",
+      "references": [
+        "R210",
+        "R511"
+      ],
+      "size_bytes": 467557,
+      "verification": "likely"
+    },
+    "FRC0805F4R70TS": {
+      "file": "FRC0805F4R70TS_4.7\u03a9_\u00b11%_125mW_0805_Thick_Film_Resistor.pdf",
+      "manufacturer": "FOJAN",
+      "description": "4.7\u03a9 \u00b11% 125mW 0805 Thick Film Resistor",
+      "value": "4.7",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/106fb934f95f063b695dad1b31b1eab8.pdf?productCode=C2933459",
+      "downloaded_date": "2026-09-25T20:03:57.064129+00:00",
+      "source": "lcsc",
+      "lcsc": "C2933459",
+      "status": "ok",
+      "references": [
+        "R301",
+        "R303",
+        "R302",
+        "R304",
+        "R305",
+        "R307",
+        "R306",
+        "R308",
+        "R309",
+        "R311",
+        "R310",
+        "R312"
+      ],
+      "size_bytes": 1678891,
+      "verification": "likely"
+    },
+    "RCA030RLF": {
+      "manufacturer": "",
+      "description": "",
+      "value": "0R BYP",
+      "references": [
+        "R601",
+        "R602",
+        "R603",
+        "R604",
+        "R605",
+        "R606"
+      ],
+      "status": "failed",
+      "error": "No datasheet URL or all download methods failed",
+      "last_attempt": "2026-09-25T20:04:01.693390+00:00"
+    },
+    "FRC0603F1001TS": {
+      "file": "FRC0603F1001TS_1k\u03a9_\u00b11%_100mW_0603_Thick_Film_Resistor.pdf",
+      "manufacturer": "FOJAN",
+      "description": "1k\u03a9 \u00b11% 100mW 0603 Thick Film Resistor",
+      "value": "1k",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/106fb934f95f063b695dad1b31b1eab8.pdf?productCode=C2907002",
+      "downloaded_date": "2026-09-25T20:03:59.381263+00:00",
+      "source": "lcsc",
+      "lcsc": "C2907002",
+      "status": "ok",
+      "references": [
+        "R402",
+        "R504",
+        "R505",
+        "R506",
+        "R510"
+      ],
+      "size_bytes": 1678891,
+      "verification": "likely"
+    },
+    "NCP18XH103F03RB": {
+      "file": "NCP18XH103F03RB_NTC_Thermistor_10k\u03a9_Surface_Mount_0603.pdf",
+      "manufacturer": "muRata",
+      "description": "NTC Thermistor 10k\u03a9 Surface Mount 0603",
+      "value": "10k NTC",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/d3311229bbd8423e9b8e18a78c95060b.pdf?productCode=C13564",
+      "downloaded_date": "2026-09-25T20:04:00.499610+00:00",
+      "source": "lcsc",
+      "lcsc": "C13564",
+      "status": "ok",
+      "references": [
+        "R513"
+      ],
+      "size_bytes": 1059606,
+      "verification": "likely"
+    },
+    "HoJLR2512-3W-1mR-1%": {
+      "file": "HoJLR2512-3W-1mR-1%_1m\u03a9_3W_Current_Sense_Resistor_SMD_\u00b11%_2512_Current_Sense_Resistors_Shunt.pdf",
+      "manufacturer": "Milliohm",
+      "description": "1m\u03a9 3W Current Sense Resistor SMD \u00b11% 2512 Current Sense Resistors / Shunt Resistors ROHS",
+      "value": "1m",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/bf6eace094b76bcd756cc1a79c576936.pdf?productCode=C2903470",
+      "downloaded_date": "2026-09-25T20:04:02.505811+00:00",
+      "source": "lcsc",
+      "lcsc": "C2903470",
+      "status": "ok",
+      "references": [
+        "RS301",
+        "RS302",
+        "RS303",
+        "RS304"
+      ],
+      "size_bytes": 3976143,
+      "verification": "unverified"
+    },
+    "DRV8323RSRGZT": {
+      "file": "DRV8323RSRGZT.pdf",
+      "manufacturer": "",
+      "description": "",
+      "value": "DRV8323RS",
+      "datasheet_url": "https://www.ti.com/lit/ds/symlink/drv8323.pdf",
+      "downloaded_date": "2026-09-25T20:04:04.276398+00:00",
+      "source": "schematic",
+      "status": "ok",
+      "references": [
+        "U201"
+      ],
+      "size_bytes": 4524709,
+      "verification": "unverified"
+    },
+    "STM32G071CBT6": {
+      "file": "STM32G071CBT6_-40\u2103~+85\u2103_1.71V~3.6V_128KB_12bit_12bit_32_Bit_36KB_44_64MHz_ARM_Cortex-M0+.pdf",
+      "manufacturer": "ST",
+      "description": "-40\u2103~+85\u2103 1.71V~3.6V 128KB 12bit 12bit 32 Bit 36KB 44 64MHz ARM Cortex-M0+ Built-in+External FLASH LQFP-48(7x7) Microcontrollers (MCU/MPU/SOC) ROHS",
+      "value": "STM32G071CBT6",
+      "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/03c62f94c08b8482f5a96e1e4c02931b.pdf?productCode=C432212",
+      "downloaded_date": "2026-09-25T20:04:04.772208+00:00",
+      "source": "lcsc",
+      "lcsc": "C432212",
+      "status": "ok",
+      "references": [
+        "U401"
+      ],
+      "size_bytes": 2180304,
+      "verification": "unverified"
+    },
+    "SN74LVC1G97DBVR": {
+      "file": "SN74LVC1G97DBVR.pdf",
+      "manufacturer": "",
+      "description": "",
+      "value": "SN74LVC1G97",
+      "datasheet_url": "https://www.ti.com/lit/ds/symlink/sn74lvc1g97.pdf",
+      "downloaded_date": "2026-09-25T20:04:26.847391+00:00",
+      "source": "schematic",
+      "status": "ok",
+      "references": [
+        "U601",
+        "U602",
+        "U603",
+        "U604",
+        "U605",
+        "U606"
+      ],
+      "size_bytes": 2101651,
+      "verification": "verified"
+    }
+  }
+}

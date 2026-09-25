@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "dshot-esc-100a")(type "KiCad")(uri "${KIPRJMOD}/lib/dshot-esc-100a.kicad_sym")(options "")(descr "Project symbols: DRV8323R (48-pin RGZ), STM32G071CBTx"))
+)
